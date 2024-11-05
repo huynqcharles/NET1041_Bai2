@@ -1,0 +1,54 @@
+﻿@model UserModel
+
+<h2>User Registration Form</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <h3>Address</h3>
+    <div>
+        <label asp-for="Address.Street"></label>
+        <input asp-for="Address.Street" class="form-control" />
+        <span asp-validation-for="Address.Street" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Address.City"></label>
+        <input asp-for="Address.City" class="form-control" />
+        <span asp-validation-for="Address.City" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Address.ZipCode"></label>
+        <input asp-for="Address.ZipCode" class="form-control" />
+        <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+    </div>
+
+    <h3>Contact Info</h3>
+    <div>
+        <label asp-for="ContactInfo.Phone"></label>
+        <input asp-for="ContactInfo.Phone" class="form-control" />
+        <span asp-validation-for="ContactInfo.Phone" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="ContactInfo.AlternatePhone"></label>
+        <input asp-for="ContactInfo.AlternatePhone" class="form-control" />
+        <span asp-validation-for="ContactInfo.AlternatePhone" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

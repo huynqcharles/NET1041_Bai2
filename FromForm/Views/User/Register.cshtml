@@ -1,0 +1,69 @@
+﻿@model UserModel
+
+<h2>User Registration Form</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Mobile"></label>
+        <input asp-for="Mobile" class="form-control" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Gender"></label>
+        <div>
+            <input asp-for="Gender" type="radio" value="Male" id="Male" />
+            <label for="Male">Male</label>
+            <input asp-for="Gender" type="radio" value="Female" id="Female" />
+            <label for="Female">Female</label>
+        </div>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Country"></label>
+        <select asp-for="Country" asp-items="@(new SelectList(ViewBag.Countries))" class="form-control"></select>
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Hobbies</label>
+        <div>
+            @foreach (var hobby in ViewBag.Hobbies)
+            {
+                <input type="checkbox" name="Hobbies" value="@hobby" />
+                <label>@hobby</label>
+            }
+        </div>
+    </div>
+
+    <div>
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
